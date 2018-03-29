@@ -2,6 +2,7 @@
 
 #include <cv.h>
 #include <Eigen/Core>
+#include <vector>
 
 enum Color {red=0, blue=1};
 
@@ -15,4 +16,4 @@ typedef struct {
     Color color;
 } BalloonInfo;
 
-const BalloonInfo processImage(const cv::Mat& img);
+const std::vector<BalloonInfo> processImage(const cv::Mat& img);

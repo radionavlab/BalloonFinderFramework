@@ -3,7 +3,7 @@ project(BalloonFinderFramework)
 set(TARGET BalloonFinderFramework)
 set(CMAKE_BUILD_TYPE Release)
 
-set(CMAKE_CXX_FLAGS "-std=c++14 ${CMAKE_CXX_FLAGS} -Wno-format-security -Wno-literal-suffix")
+set(CMAKE_CXX_FLAGS "-std=c++17 ${CMAKE_CXX_FLAGS} -Wno-format-security -Wno-literal-suffix")
 
 find_package(OpenCV REQUIRED)
 
@@ -16,5 +16,5 @@ file(GLOB_RECURSE SRC_FILES "src/*.cc")
 
 # add the ROS executables
 add_executable(${TARGET} ${SRC_FILES})
-target_link_libraries(${TARGET} ${OpenCV_LIBS})
+target_link_libraries(${TARGET} ${OpenCV_LIBS} "-lstdc++fs")
 
