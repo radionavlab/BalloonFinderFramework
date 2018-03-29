@@ -1,5 +1,7 @@
 # Balloon Finder Framework
+This is a framework used to test C++ OpenCV algorithms used to find balloons. To run this, first add images of balloons to the images directory and then follow the build and run instructions below.
 
+If you run the program from a directory that is not "build-release", you will have to change the path to the images directory in the main file as it is a relative path.
 
 ## Pre-install Requirements
 ``` 
