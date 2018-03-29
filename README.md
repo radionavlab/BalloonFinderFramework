@@ -39,5 +39,5 @@ make all -j4
 ### Run the project
 ```
 cd build-release
-./main
+./BalloonFinderFramework
 ```

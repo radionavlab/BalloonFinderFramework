@@ -2,7 +2,7 @@
 #include <iostream>
 #include <sys/time.h>
 #include "sensorParams.h"
-#include "GPS.h"
+#include "gps.h"
 
 #include <sstream>
 #include <opencv2/opencv.hpp>

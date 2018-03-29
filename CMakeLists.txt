@@ -12,16 +12,9 @@ include_directories(
 	${OpenCV_INCLUDE_DIRS}
 )
 
-## Declare a C++ library
-# add_library(SRC_FILES
-#   src/main.cc
-# )
-
-target_link_libraries(snap_cam
-  ${OpenCV_LIBS}
-)
+file(GLOB_RECURSE SRC_FILES "src/*.cc")
 
 # add the ROS executables
-add_executable(${TARGET} src/main.cc)
+add_executable(${TARGET} ${SRC_FILES})
 target_link_libraries(${TARGET} ${OpenCV_LIBS})
 
