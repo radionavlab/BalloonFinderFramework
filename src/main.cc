@@ -44,17 +44,26 @@ int main() {
 
         // Draw circle around located balloons
         for(BalloonInfo& info: balloonInfoVec) {
+            // Draw outer circle
             cv::circle(inputImg, 
                 cv::Point2d(info.balloonLocation(0), info.balloonLocation(1)),
                 info.balloonRadius,
-                cv::Scalar(128, 64, 64));
+                cv::Scalar(0, 0, 0),
+                5);
+
+            // Draw inner circle
+            cv::circle(inputImg, 
+                cv::Point2d(info.balloonLocation(0), info.balloonLocation(1)),
+                5,
+                cv::Scalar(0, 0, 0),
+                5);
         }
 
         // Display image
-        cv::Mat displayImg = cv::Mat(480, 640, 3);
+        cv::Mat displayImg = cv::Mat(960, 1280, 3);
         cv::resize(inputImg, displayImg, displayImg.size());
         cv::imshow("Image", displayImg); 
-        cv::waitKey(1);  
+        cv::waitKey(0);  
     }
 
 
