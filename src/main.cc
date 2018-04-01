@@ -1,6 +1,7 @@
 #include <cstdlib>
 #include <string>
 #include <iostream>
+#include <fstream>
 #include <experimental/filesystem>
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -19,14 +20,13 @@ SensorParams sensorParams;
 int main() {
 
     /* Fill in sensor params */
-    sensorParams.rcB = Eigen::Vector3d(0.1159, -0.0004, -0.0435);
-    sensorParams.rpB = Eigen::Vector3d(0.1013, -0.0004 , 0.0472);
-    sensorParams.rrG = Eigen::Vector3d(-741990.536, -5462227.638, 3198019.45);
-    sensorParams.riG = Eigen::Vector3d(-742015.136, -5462219.538, 3198014.35);
     sensorParams.f = 1600.0;
     sensorParams.k1 = -0.02;
     sensorParams.imageWidth = 3840;
     sensorParams.imageHeight = 2176;
+
+    /* Output file */
+    std::ofstream output("../images/balloon_positions.txt");
 
     /* Process images */
     const std::string imageDirPath = "../images/";
@@ -42,28 +42,18 @@ int main() {
         // Find balloons
         std::vector<BalloonInfo> balloonInfoVec = processImage(inputImg);
 
-        // Draw circle around located balloons
-        for(BalloonInfo& info: balloonInfoVec) {
-            // Draw outer circle
-            cv::circle(inputImg, 
-                cv::Point2d(info.balloonLocation(0), info.balloonLocation(1)),
-                info.balloonRadius,
-                cv::Scalar(0, 0, 0),
-                5);
-
-            // Draw inner circle
-            cv::circle(inputImg, 
-                cv::Point2d(info.balloonLocation(0), info.balloonLocation(1)),
-                5,
-                cv::Scalar(0, 0, 0),
-                5);
+        if(!balloonInfoVec.empty()) {
+            const BalloonInfo info = balloonInfoVec[0];
+            if(info.color == blue) { continue; }
+            
+            output << de.path().filename().string() 
+                   << " " 
+                   << (info.balloonLocation(0) - sensorParams.imageWidth / 2) 
+                   << " " 
+                   << -(info.balloonLocation(1) - sensorParams.imageHeight / 2)
+                   << "\n";
         }
 
-        // Display image
-        cv::Mat displayImg = cv::Mat(960, 1280, 3);
-        cv::resize(inputImg, displayImg, displayImg.size());
-        cv::imshow("Image", displayImg); 
-        cv::waitKey(0);  
     }
 
 
