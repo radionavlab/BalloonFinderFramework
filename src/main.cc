@@ -7,14 +7,12 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
-#include "gps.h"
 #include "sensorParams.h"
 #include "callback.h"
 
 namespace fs = std::experimental::filesystem;
 
 /* Extern variables */
-GPSSolution gpsSolution;
 SensorParams sensorParams;
 
 int main() {
