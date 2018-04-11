@@ -21,10 +21,10 @@ int main() {
     sensorParams.rpB = Eigen::Vector3d(0.1013, -0.0004 , 0.0472);
     sensorParams.rrG = Eigen::Vector3d(-741990.536, -5462227.638, 3198019.45);
     sensorParams.riG = Eigen::Vector3d(-742015.136, -5462219.538, 3198014.35);
-    sensorParams.f = 1600.0;
-    sensorParams.k1 = -0.02;
-    sensorParams.imageWidth = 3840;
-    sensorParams.imageHeight = 2176;
+    sensorParams.camera_matrix = (cv::Mat1d(3, 3) << 1691.0, 0, 1914.0, 0, 1697.0, 1074.0, 0, 0, 1);
+    sensorParams.dist_coeffs = (cv::Mat1d(1, 5) << -0.06117476, 0.11208021, -0.00043455, -0.00232441, -0.06783447);
+    sensorParams.image_width   = 3840;
+    sensorParams.image_height  = 2160;
 
     /* Process images */
     const std::string imageDirPath = "../images/";
