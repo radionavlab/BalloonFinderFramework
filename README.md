@@ -3,6 +3,8 @@ This is a framework used to test C++ OpenCV algorithms used to find balloons. To
 
 If you run the program from a directory that is not "build-release", you will have to change the path to the images directory in the main file as it is a relative path.
 
+This project takes care of reading images from disk and displaying them. Students should only have to write the function in callback.cc. Their code must adhere to the input-output interface: OpenCV Image -> vector<BalloonInfo>.
+
 ## Pre-install Requirements
 ``` 
 sudo apt-get install cmake 
@@ -23,7 +25,12 @@ sudo make all -j4 install
 ```
 
 ## Build and Run
-## Change to BalloonFinderFramework directory
+### Add images to the images directory
+```
+cp example_image.jpg images/
+```
+
+### Change to BalloonFinderFramework directory
 Go to wherever this project was cloned.
 
 ### Make a build directory
@@ -43,3 +50,6 @@ make all -j4
 cd build-release
 ./BalloonFinderFramework
 ```
+
+## Problems or questions
+Email Tucker at thaydon@utexas.edu
