@@ -24,10 +24,6 @@ typedef struct {
     // k1, k2, p1, p2, k3
     cv::Mat dist_coeffs;
 
-    /* Image size */
-    int image_width;
-    int image_height;    
-
 } SensorParams;
 
 extern SensorParams sensorParams;
