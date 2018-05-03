@@ -20,3 +20,26 @@ const std::vector<BalloonInfo> processImage(const cv::Mat& img) {
 
     return std::vector<BalloonInfo>();
 }
+
+/*
+* Take a database of image observations and estimate the 3D position of the balloons
+*/
+const std::map<Color, Eigen::Vector3d> estimatePosition(const std::map<std::string, Observation>& database) {
+    /* Sensor params in: sensorParams */
+    /* Example: cv::Mat cameraMatrixMat = sensorParams.camera_matrix; */
+    /* Look at the available sensor params in include/sensorParams.h */
+
+    /* 
+    * YOUR CODE GOES HERE
+    */
+
+    // Example code
+    for (auto const& it : database) {
+        std::cout << it.first << ": " << it.second.quad_pos.transpose() << std::endl;
+    }
+
+    // Example return
+    std::map<Color, Eigen::Vector3d> balloon_positions;
+    balloon_positions[red] = Eigen::Vector3d(0, 0, 0);
+    return balloon_positions;
+}

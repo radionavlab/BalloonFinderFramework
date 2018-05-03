@@ -51,5 +51,11 @@ cd build-release
 ./BalloonFinderFramework
 ```
 
+### Example Dataset
+In an ENU frame centered at the hard-coded position, the two balloons for the balloons3.tar.gz dataset are approximately at:
+7.21821 -2.30267  1.87515  
+7.22223 1.19312 1.80549 
+ 
+
 ## Problems or questions
 Email Tucker at thaydon@utexas.edu
