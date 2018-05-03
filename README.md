@@ -26,8 +26,12 @@ sudo make all -j4 install
 
 ## Build and Run
 ### Add images to the images directory
+Download and extract the balloons3.tar.gz dataset to the images directory.
 ```
-cp example_image.jpg images/
+cd images/
+wget http://radionavlab.ae.utexas.edu/datastore/aerialRobotics/balloons3.tar.gz
+tar -xvf balloons3.tar.gz .
+mv 2018-04-06/* .
 ```
 
 ### Change to BalloonFinderFramework directory
@@ -53,9 +57,10 @@ cd build-release
 
 ### Example Dataset
 In an ENU frame centered at the hard-coded position, the two balloons for the balloons3.tar.gz dataset are approximately at:
+```
 7.21821 -2.30267  1.87515  
 7.22223 1.19312 1.80549 
- 
+```
 
 ## Problems or questions
 Email Tucker at thaydon@utexas.edu

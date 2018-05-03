@@ -35,7 +35,11 @@ const std::map<Color, Eigen::Vector3d> estimatePosition(const std::map<std::stri
 
     // Example code
     for (auto const& it : database) {
-        std::cout << it.first << ": " << it.second.quad_pos.transpose() << std::endl;
+        std::cout << it.first << ": " << std::endl;
+        for(const BalloonInfo& info: it.second.info_vec) {
+            std::cout << info.balloonLocation.transpose() << std::endl;
+        }
+        std::cout << std::endl;
     }
 
     // Example return
