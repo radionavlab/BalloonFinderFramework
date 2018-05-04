@@ -31,7 +31,7 @@ int main() {
 
     /* Process images */
     const std::string image_dir_path = "../images/";
-    std::map<std::string, Observation> database;
+    std::vector<Observation> database;
     
     for(const auto& de: fs::directory_iterator(image_dir_path)){
         const std::string image_path = de.path().string();
@@ -75,7 +75,7 @@ int main() {
                 std::pow(meas.az_sigma, 2), 
                 std::pow(meas.roll_sigma, 2)).asDiagonal() 
             };
-        database[image_name] = obs;
+        database.push_back(obs);
         std::cout << "Estimated Position: " << estimatePosition(database).at(red).transpose() << std::endl;
 
         // Display image

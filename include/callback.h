@@ -49,4 +49,4 @@ typedef struct {
 } Observation;
 
 const std::vector<BalloonInfo> processImage(const cv::Mat& img);
-const std::map<Color, Eigen::Vector3d> estimatePosition(const std::map<std::string, Observation>& database);
+const std::map<Color, Eigen::Vector3d> estimatePosition(const std::vector<Observation>& database);
