@@ -18,12 +18,26 @@ SensorParams sensorParams;
 int main() {
 
     /* Fill in sensor params */
+    // Vector from body origin to camera origin in body frame
     sensorParams.rcB = Eigen::Vector3d(0.1159, -0.0004, -0.0435);
+
+    // Vector from body origin to primary antenna in body frame
     sensorParams.rpB = Eigen::Vector3d(0.1013, -0.0004 , 0.0472);
+
+    // Vector from ECEF origin to reference station in ECEF frame
     sensorParams.rrG = Eigen::Vector3d(-741990.536, -5462227.638, 3198019.45);
+
+    // Vector from ECEF origin to ENU origin in ECEF frame
     sensorParams.riG = Eigen::Vector3d(-742018.3187986395, -5462218.0363918105, 3198014.2988005267);
+
+    // Camera Matrix
     sensorParams.camera_matrix = (cv::Mat1d(3, 3) << 1691.0, 0, 1914.0, 0, 1697.0, 1074.0, 0, 0, 1);
+
+    // Distortion Coefficients
     sensorParams.dist_coeffs = (cv::Mat1d(1, 5) << -0.06117476, 0.11208021, -0.00043455, -0.00232441, -0.06783447);
+
+    // Pitch of the camera. Angled 30 degrees down
+    sensorParams.camera_angle = M_PI/6;
 
     /* Read in the measurement file */
     const std::string measurement_file_path = "../images/image_data_raw.txt";
@@ -76,7 +90,7 @@ int main() {
                 std::pow(meas.roll_sigma, 2)).asDiagonal() 
             };
         database.push_back(obs);
-        std::cout << "Estimated Position: " << estimatePosition(database).at(red).transpose() << std::endl;
+        std::cout << "Estimated Red Position: " << estimatePosition(database).at(red).transpose() << std::endl;
 
         // Display image
         cv::Mat displayImg = cv::Mat(960, 1280, 3);

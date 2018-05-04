@@ -24,6 +24,9 @@ typedef struct {
     // k1, k2, p1, p2, k3
     cv::Mat dist_coeffs;
 
+    // Pitch of the camera. Angled 30 degrees down.
+    double camera_angle;
+
 } SensorParams;
 
 extern SensorParams sensorParams;
