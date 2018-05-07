@@ -40,7 +40,7 @@ int main() {
     sensorParams.camera_angle = M_PI/6;
 
     // Focal length of camera in pixels
-    sensorParams.focal_length = 1600.0; 
+    sensorParams.focal_length = 1690.0; 
 
     /* Read in the measurement file */
     const std::string measurement_file_path = "../images/image_data_raw.txt";
