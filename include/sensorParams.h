@@ -27,6 +27,9 @@ typedef struct {
     // Pitch of the camera. Angled 30 degrees down.
     double camera_angle;
 
+    // Focal length in pixels
+    double focal_length;
+
 } SensorParams;
 
 extern SensorParams sensorParams;

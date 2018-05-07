@@ -39,6 +39,9 @@ int main() {
     // Pitch of the camera. Angled 30 degrees down
     sensorParams.camera_angle = M_PI/6;
 
+    // Focal length of camera in pixels
+    sensorParams.focal_length = 1600.0; 
+
     /* Read in the measurement file */
     const std::string measurement_file_path = "../images/image_data_raw.txt";
     std::map<std::string, RawMeasurement> measurement_map = ParseMeasurementFile(measurement_file_path);
